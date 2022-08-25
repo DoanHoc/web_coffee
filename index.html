@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>VH COFFEE</title>
+    <!--Link to CSS-->
+    <link rel="stylesheet" href="style.css">
+    <!--Box icon-->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+
+<body>
+    <!-- /////////////////////////////----Navbar--///////////////////////////////// -->
+    <header>
+        <a href="#" class="Logo">
+            <img src="PNG/Logo.png" width="80px" height="80px">
+        </a>
+        <!--Menu-Icon-->
+        <i class='bx bx-menu' id="menu-icon"></i>
+        <!--chèn icon từ web boxicons-->
+        <!-- search -->
+        <div class="box-search">
+            <input type="checkbox" id="check">
+            <div class="search-box">
+                <input type="search" name="" id="" placeholder="Tìm Kiếm...">
+                <label for="check" class="icon-search">
+                    <i class='bx bx-search' id="search-icon"></i>
+                </label>
+            </div>
+        </div>
+        <!--Links-->
+        <ul class="navbar">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#nhietdodoam">Weather</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#aboutus">About Us</a></li>
+        </ul>
+        <!--icon-->
+        <!-- <div class="header-icon">
+                <i class='bx bx-cart-alt'></i>
+                <i class='bx bx-search'id="search-icon"></i>
+            </div> -->
+        <!--///////- Search-box-////// -->
+    </header>
+    <!-- ///////////////////////////////////////-Home-////////////////////////////////////// -->
+    <section class="home" id="home">
+        <div class="home-text">
+            <h1>Start your day with<br>VH COFFEE</h1>
+            <p>VH COFFEE: TỰ HÀO SINH RA TỪ ĐẤT VIỆT, 2022<br>
+                Cà phê từ lâu đã là một phần không thể tách rời của văn hoá Việt.<br>
+                Từ năm 2022, hành trình nâng tầm giá trị cà phê Việt<br>
+                của VH Coffee chính thức bắt đầu.
+            </p>
+            <a href="#" class="btn">Khám phá ngay</a>
+        </div>
+        <!-- <div class="home-img">
+                <img src="PNG/CAPUCCINO.png" alt="" width="512" height="512">
+            </div> -->
+    </section>
+    <!-- /////////////////////////////////////////-Firebase Tien-//////////////////////////////////// -->
+    <section class="nhietdodoam" id="nhietdodoam">
+        <div class="NDLM"id="top">
+            <div id="nhietdo1"> 
+                <img src="PNG/Nhietdo.png" id="nd1" width="120px" height="120px">
+                <h2>Nhiệt độ</h2>
+                <span id="Nhiet do"></span>
+            </div>
+            <div id="doam1"> 
+                <img src="PNG/Doam.png" id="da1" width="120px" height="120px">
+                <h2>Độ ẩm</h2>
+                <span id="Do am"></span>
+            </div>
+            <div id="bot">
+                <h1><center><img src="PNG/open.png"id="open" width="120px" height="120px"></center>
+                    <button class="button" type="button" id="btn1" >
+                        <span class="button__text">Open</span>
+                        <span class="button__icon">
+                            <i class='bx bx-lock-open-alt' ></i>
+                        </span>
+                    </button>
+                    <button class="button" type="button" id="btn2" >
+                        <span class="button__text">Close</span>
+                        <span class="button__icon">
+                            <i class='bx bx-lock-alt'></i>
+                        </span>
+                    </button>
+              </h1>
+            </div>
+            <script src="js.js"></script>
+        <!--//////////////////////////// Firebase ////////////////////////-->
+        <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-database.js"></script>
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+                     https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
+        <script type="module">
+            const firebaseConfig = {
+                apiKey: "AIzaSyDoZ3D_9UqHgTnDMQPg64jDeVcFQaVzBWY",
+                authDomain: "vhcoffee-572dd.firebaseapp.com",
+                databaseURL: "https://vhcoffee-572dd-default-rtdb.firebaseio.com",
+                projectId: "vhcoffee-572dd",
+                storageBucket: "vhcoffee-572dd.appspot.com",
+                messagingSenderId: "904100536731",
+                appId: "1:904100536731:web:c76a1cc5249bd4317ac13e",
+                measurementId: "G-TL63GEBCRR"
+            };
+
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            firebase.analytics();
+
+            
+            // /////////////////////////////////////////////////////
+
+            var item1 = document.getElementById('item1');
+            var dbRef = firebase.database().ref().child('item1');
+            dbRef.on('value', snap => item1.innerText = snap.val());
+
+            var item2 = document.getElementById('item2');
+            var dbRef2 = firebase.database().ref().child('item2');
+            dbRef2.on('value', snap => item2.innerText = snap.val());
+
+            var item3 = document.getElementById('item3');
+            var dbRef3 = firebase.database().ref().child('item3');
+            dbRef3.on('value', snap => item3.innerText = snap.val());
+
+            var item4 = document.getElementById('item4');
+            var dbRef4 = firebase.database().ref().child('item4');
+            dbRef4.on('value', snap => item4.innerText = snap.val());
+
+            var item5 = document.getElementById('item5');
+            var dbRef5 = firebase.database().ref().child('item5');
+            dbRef5.on('value', snap => item5.innerText = snap.val());
+
+            var item6 = document.getElementById('item6');
+            var dbRef6 = firebase.database().ref().child('item6');
+            dbRef6.on('value', snap => item6.innerText = snap.val());
+            // Ten San Pham
+            var sp1 = document.getElementById('sp1');
+            var ten1 = firebase.database().ref().child('sp1');
+            ten1.on('value', snap => sp1.innerText = snap.val());
+
+            var sp2 = document.getElementById('sp2');
+            var ten2 = firebase.database().ref().child('sp2');
+            ten2.on('value', snap => sp2.innerText = snap.val());
+
+            var sp3 = document.getElementById('sp3');
+            var ten3 = firebase.database().ref().child('sp3');
+            ten3.on('value', snap => sp3.innerText = snap.val());
+
+            var sp4 = document.getElementById('sp4');
+            var ten4 = firebase.database().ref().child('sp4');
+            ten4.on('value', snap => sp4.innerText = snap.val());
+
+            var sp5 = document.getElementById('sp5');
+            var ten5 = firebase.database().ref().child('sp5');
+            ten5.on('value', snap => sp5.innerText = snap.val());
+
+            var sp6 = document.getElementById('sp6');
+            var ten6 = firebase.database().ref().child('sp6');
+            ten6.on('value', snap => sp6.innerText = snap.val());
+            // ////////////////////////////////////////
+
+            var nd = document.getElementById('Nhiet do');
+            var dbRef = firebase.database().ref().child('Nhiet do');
+            dbRef.on('value', snap => nd.innerText = snap.val()+"°C");
+
+            var da = document.getElementById('Do am');
+            var dbRef = firebase.database().ref().child('Do am');
+            dbRef.on('value', snap => da.innerText = snap.val()+"%");
+
+        </script>
+    </section>
+    <!-- /////////////////////////////----Producs-Container--///////////////////////////////// -->
+    <!--Products-->
+    <section class="products" id="products">
+        <div class="heading">
+            <h2>Sản Phẩm Bán Chạy</h2>
+        </div>
+        <!--Container-->
+        <div class="products-container">
+            <div class="box">
+                <img src="PNG/CAPUCCINO.png" alt="">
+                <h3 id="sp1"></h3>
+                <div class="content">
+                    <span id="item1"></span>
+                    <a href="#">Mua ngay</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="PNG/CFDENNONG.png" alt="">
+                <h3 id="sp2"></h3>
+                <div class="content">
+                    <span id="item2"></span>
+                    <a href="#">Mua ngay</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="PNG/CFPHINDEN.png" alt="">
+                <h3 id="sp3"></h3>
+                <div class="content">
+                    <span id="item3"></span>
+                    <a href="#">Mua ngay</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="PNG/CFPHINSUA.png" alt="">
+                <h3 id="sp4"></h3>
+                <div class="content">
+                    <span id="item4"></span>
+                    <a href="#">Mua ngay</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="PNG/PHINSUADA.png" alt="">
+                <h3 id="sp5"></h3>
+                <div class="content">
+                    <span id="item5"></span>
+                    <a href="#">Mua ngay</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="PNG/SUACCF.png" alt="">
+                <h3 id="sp6"></h3>
+                <div class="content">
+                    <span id="item6"></span>
+                    <a href="#">Mua ngay</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //////////////////////////////----About us------//////////////////////////////////////-->
+    <section class="aboutus" id="aboutus">
+        <div class="heading">
+            <h2>About us</h2>
+        </div>
+        <!-- container -->
+        <div class="aboutus-container">
+            <div class="box">
+                <div class="stars">
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star-half'></i>
+                    <p> Chức vụ: CEO <br> Học vấn: Đại Học <br>Trường: đại học Sư Phạm Kỹ Thuật<br>MSSV:19119090</p>
+                    <h2>Đoàn Thái Học</h2>
+                    <img src="PNG/doanhoc.jpg" alt="">
+                </div>
+            </div>
+            <div class="box">
+                <div class="stars">
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star'></i>
+                    <i class='bx bxs-star-half'></i>
+                    <p> Chức vụ: CEO <br> Học vấn: Đại Học <br>Trường: đại học Sư Phạm Kỹ Thuật<br>MSSV:19119151</p>
+                    <h2>Võ Chí Vỹ</h2>
+                    <img src="PNG/chivy.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //////////////////////////////----Footer------//////////////////////////////////////-->
+    <section class="footer">
+        <div class="footer-box">
+            <h2>VH Coffee Shop</h2>
+            <p>Theo dõi chúng tôi qua các kênh:</p>
+            <div class="social">
+                <a href="#"><i class='bx bxl-facebook'></i></a>
+                <a href="#"><i class='bx bxl-tiktok'></i></a>
+                <a href="#"><i class='bx bxl-instagram'></i></a>
+                <a href="#"><i class='bx bxl-youtube'></i></a>
+            </div>
+        </div>
+        <div class="footer-box">
+            <h3>Hỗ Trợ</h3>
+            <li><a href="#">Quy Tắc Bảo Mật</a></li>
+            <li><a href="#">Trợ giúp & Hỗ Trợ</a></li>
+            <li><a href="#">Chính Sách Hoàn Trả</a></li>
+            <li><a href="#">Điều Khoản Sử Dụng</a></li>
+        </div>
+        <div class="footer-box">
+            <h3>Giới Thiệu</h3>
+            <li><a href="#">Sản Phẩm</a></li>
+            <li><a href="#">Khuyến Mãi</a></li>
+            <li><a href="#">Cửa Hàng</a></li>
+            <li><a href="#">Tuyển Dụng</a></li>
+        </div>
+        <div class="footer-box">
+            <h3>Liên Hệ</h3>
+            <div class="contact">
+                <span><i class='bx bxs-map'></i>1 Đ. Võ Văn Ngân, Linh Chiểu, Thành Phố Thủ Đức, Thành phố Hồ Chí
+                    Minh</span>
+                <span><i class='bx bxs-phone'></i>+84 797979797</span>
+                <span><i class='bx bx-world'></i>VHcoffee.com</span>
+            </div>
+        </div>
+    </section>
+    <!-- //////////////////////////////----Copyright------//////////////////////////////////////-->
+    <div class="copyright">
+        <p>&#169 Bản quyền thuộc về Vỹ&Học COFFEE, Since 2022</p>
+    </div>
+</body>
+</html>
